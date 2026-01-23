@@ -11,7 +11,14 @@ def generate_id():
 
 def add_student():
     name = input("Name: ")
-    age = int(input("Age: "))
+
+    while True:
+          try:
+           age = int(input("Age: "))
+           break
+          except ValueError:
+            print("Please enter a valid integer.")
+            
     field = input("Field of study: ")
 
     student = {
