@@ -18,7 +18,7 @@ def add_student():
            break
           except ValueError:
             print("Please enter a valid integer.")
-            
+
     field = input("Field of study: ")
 
     student = {
@@ -54,9 +54,29 @@ def update_student():
 
     for student in students:
         if student["id"] == student_id:
-            student["name"] = input("New name: ")
-            student["age"] = int(input("New age: "))
-            student["field"] = input("New field: ")
+            print("Type new value or press enter to keep one.")
+
+         # Handling name
+            new_name = input("Name: ")
+            if new_name != "":
+                student["name"] = new_name
+
+         # Handling age
+            while True:
+              new_age_str = input("Enter new age: ")
+              if new_age_str == "":
+                break
+              try:
+                  student["age"] = int(new_age_str)
+                  break
+              except ValueError:
+                  print("Please enter a valid integer.")
+
+         # Handling field
+            new_field = input("Field of study: ")
+            if new_field != "":
+                student["field"] = new_field
+            
             save_students(students)
             print("Student information updated.")
             return
